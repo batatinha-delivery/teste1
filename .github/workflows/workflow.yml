@@ -1,0 +1,19 @@
+name: Example Workflow
+
+on: 
+  workflow_dispatch:
+    inputs:
+      username:
+        description: 'UserName'     
+        required: true
+
+jobs:
+  call-workflow-1:
+    uses: batatinha-delivery/workflows/.github/workflows/teste.yml@master
+    with:
+      username: ${{ github.event.inputs.username }}
+  another:
+    runs-on: ubuntu-latest
+    steps: 
+      - run: echo "ACABOU!!!"
+        
